@@ -196,3 +196,10 @@ footer p {
 a {
   text-decoration: none;
 }
+
+#CarruselRosas{
+    max-width: 40%;
+    border: 1px solid red;
+    margin: 0 auto;
+
+}
