@@ -37,10 +37,16 @@ header img {
 
 #SHEN {
   font-family: 'Playfair Display', serif;
-  font-size: 3rem;
+  font-size: 2.2rem;
   color: var(--dark-color);
   margin: 0 0 0.5rem 0;
   letter-spacing: 1px;
+}
+
+@media (min-width: 768px) {
+  #SHEN {
+    font-size: 3rem;
+  }
 }
 
 .titulo2 {
@@ -123,14 +129,23 @@ section {
 
 section>div:first-child {
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 3rem;
-  margin-bottom: 5rem;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
   background: white;
-  padding: 3rem;
+  padding: 1.5rem;
   border-radius: 16px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+}
+
+@media (min-width: 768px) {
+  section>div:first-child {
+    gap: 3rem;
+    margin-bottom: 5rem;
+    padding: 3rem;
+  }
 }
 
 section>div:first-child p {
@@ -141,7 +156,8 @@ section>div:first-child p {
 }
 
 section>div:first-child img {
-  width: 350px !important;
+  width: 100% !important;
+  max-width: 350px;
   height: auto;
   border-radius: 12px;
   object-fit: cover;
@@ -198,8 +214,18 @@ a {
 }
 
 #CarruselRosas{
-    max-width: 40%;
-    border: 1px solid red;
+    width: 100%;
+    max-width: 800px;
     margin: 0 auto;
+}
 
+@media (min-width: 768px) {
+    #CarruselRosas{
+        width: 60%;
+    }
+}
+@media (min-width: 992px) {
+    #CarruselRosas{
+        width: 40%;
+    }
 }
