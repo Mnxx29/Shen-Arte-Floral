@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="img/favicon.ico">
+    <link rel="icon" href="../img/favicon.ico">
 </head>
 
 <body>
@@ -26,51 +26,83 @@
             <li><a href="Contacto.html">Contacto</a></li>
         </ul>
     </nav>
-    <section>
-        <h2>Nuestros Servicios</h2>
-        <div>
-        <p>
-            En <strong>Shen Arte Floral</strong> ofrecemos arreglos florales únicos y personalizados para todo tipo de ocasiones.
-            Nos especializamos en sorprender a tus seres queridos con entregas a domicilio en fechas importantes.
-        </p>
-        <img src="../img/Flores (imagen temporal).png" alt="Entrega de flores a domicilio">
-    </div>
-        <p>Ofrecemos una amplia gama de servicios florales para satisfacer todas tus necesidades.</p>
-<div>
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Nuestros Servicios</h2>
+        <div class="text-center mb-5">
+            <p class="lead">
+                En <strong>Shen Arte Floral</strong> ofrecemos arreglos florales únicos y personalizados para todo tipo de ocasiones.
+                Nos especializamos en sorprender a tus seres queridos con entregas a domicilio en fechas importantes.
+            </p>
+            <img src="../img/Flores (imagen temporal).png" alt="Entrega de flores a domicilio" class="img-fluid rounded shadow-sm mt-3" style="max-height: 400px; object-fit: cover;">
+        </div>
+        
+        <p class="text-center mb-4 fs-5">Ofrecemos una amplia gama de servicios florales para satisfacer todas tus necesidades:</p>
 
-        <div>
-            <img src="../img/Rosassanvalentin (imagen temporal).png" alt="Flores San Valentín">
-            <h3>San Valentín</h3>
-            <p>Expresa tu amor con hermosos ramos de rosas y arreglos románticos entregados directamente a la puerta.</p>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4 mb-5">
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                    <img src="../img/Rosassanvalentin (imagen temporal).png" class="card-img-top rounded-top" alt="Flores San Valentín" style="height: 250px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h4 class="card-title text-danger">San Valentín</h4>
+                        <p class="card-text">Expresa tu amor con hermosos ramos de rosas y arreglos románticos entregados directamente a la puerta para celebrar el día del amor.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                    <img src="../img/Cumpleaños.png" class="card-img-top rounded-top" alt="Flores cumpleaños" style="height: 250px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h4 class="card-title text-primary">Cumpleaños</h4>
+                        <p class="card-text">Sorprende en su día especial con flores frescas y coloridas, y acompáñalas de mensajes personalizados que animen su celebración.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                    <img src="../img/diadelamadre.png" class="card-img-top rounded-top" alt="Flores Día de la Madre" style="height: 250px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h4 class="card-title" style="color: #e83e8c;">Día de la Madre</h4>
+                        <p class="card-text">Demuestra tu profundo cariño con arreglos delicados y elegantes ideales para mamá, agradeciéndole de corazón por todo su amor.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                    <img src="../img/aniversario.png" class="card-img-top rounded-top" alt="Flores aniversario" style="height: 250px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h4 class="card-title text-secondary">Aniversarios</h4>
+                        <p class="card-text">Celebra momentos especiales con flores de grado premium, diseñadas cuidadosamente para transmitir aquellas emociones únicas.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div>
-            <img src="../img/Cumpleaños.png" alt="Flores cumpleaños">
-            <h3>Cumpleaños</h3>
-            <p>Sorprende en su día especial con flores frescas y mensajes personalizados.</p>
+        <h2 class="text-center mb-4 mt-5">Entregas y Sorpresas a Domicilio</h2>
+        <div class="card shadow border-0 mb-5" style="background-color: #fdfdfd;">
+            <div class="row g-0 align-items-center">
+                <div class="col-md-5 text-center p-3 p-md-4">
+                    <img src="../img/entregarapida.png" class="img-fluid rounded" alt="Entrega Rápida" style="max-height: 380px; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body p-md-5">
+                        <h3 class="card-title mb-4">¿Alguien especial está lejos? ¡Nosotros vamos!</h3>
+                        <p class="card-text fs-5">
+                            Realizamos recados y entregas exclusivas el mismo día dentro de Puerto Montt. Ya no necesitas preocuparte por las distancias: si tu pareja o ser amado está en otra ciudad, nosotros somos tus aliados para hacerle llegar ese regalo.
+                        </p>
+                        <p class="card-text mt-3">
+                            <strong>¿Quieres enviarle flores temprano en su mañana?</strong> Lo hacemos posible. Por encargo, puedes especificar la hora exacta y entregaremos ese bello ramo floral junto a una tarjeta con dedicatoria en la puerta de su casa o trabajo.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div>
-            <img src="../img/diadelamadre.png" alt="Flores Día de la Madre">
-            <h3>Día de la Madre</h3>
-            <p>Demuestra tu cariño con arreglos delicados y elegantes para mamá.</p>
+        <div class="alert alert-success text-center mt-4 fs-5 shadow-sm border-0" role="alert">
+            📞 <strong>Contáctanos</strong> para coordinar esa entrega especial, a la hora que pidas. Tu sorpresa es nuestra mayor dedicación.
         </div>
-
-<div>
-            <img src="../img/aniversario.png" alt="Flores aniversario">
-            <h3>Aniversarios</h3>
-            <p>Celebra momentos especiales con flores diseñadas para transmitir emociones únicas.</p>
-        </div>
-
-        <div>
-            <img src="../img/entregarapida.png" alt="Entrega rápida">
-            <h3>Entrega Rápida</h3>
-            <p>Realizamos entregas el mismo día dentro de Puerto Montt para pedidos realizados con anticipación.</p>
-        </div>
-
-<p style="text-align:center; margin-top:2rem;">
-    📞 Contáctanos para coordinar tu entrega especial y hacer tu pedido con anticipación.
-</p>
     </section>
     <footer>
         <p>&copy; 2023 Shen Arte Floral. Todos los derechos reservados.</p>
