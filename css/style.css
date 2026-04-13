@@ -225,20 +225,3 @@ footer p {
 a {
   text-decoration: none;
 }
-
-#CarruselRosas{
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-    #CarruselRosas{
-        width: 60%;
-    }
-}
-@media (min-width: 992px) {
-    #CarruselRosas{
-        width: 40%;
-    }
-}
