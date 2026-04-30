@@ -34,11 +34,10 @@
         </ul>
     </nav>
     <section class="container my-5 contact-page">
-        <div class="text-center">
+        <!--<div class="text-center">
             <div>
                 <h2 class="mb-3">Cont&aacute;ctanos</h2>
                 <p class="lead mb-0">
-                    <h2>uno</h2>
                     En <strong>Shen Arte Floral</strong> somos una florer&iacute;a online de Puerto Montt dedicada a
                     crear
                     ramos, bouquets y arreglos florales para regalos, sorpresas y fechas especiales.
@@ -48,65 +47,77 @@
             </div>
             <img src="../img/arreglofloral.jpeg" alt="Arreglo floral de Shen Arte Floral"
                 class="img-fluid rounded shadow-sm">
-        </div>
+        </div>-->
 
         <div class="row g-4 align-items-start justify-content-center contact-message-row">
             <div class="col-12 col-lg-5">
                 <div class="card shadow border-0">
                     <div class="card-body p-4 text-center">
                         <h3 class="mb-4">Formulario de contacto</h3>
-                                <form>
-                                    <div class="form-group">
-                                        <label for="nombre">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre" placeholder="Escribe tu nombre">
+                        <form class="text-start">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="Escribe tu nombre">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="apellido" class="form-label">Apellido</label>
+                                    <input type="text" class="form-control" id="apellido"
+                                        placeholder="Escribe tu apellido">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="rut" class="form-label">Rut</label>
+                                <input type="text" class="form-control" id="rut" placeholder="Escribe tu rut">
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Correo</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Escribe tu email">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="telefono" class="form-label">Teléfono</label>
+                                    <input type="text" class="form-control" id="telefono"
+                                        placeholder="Escribe tu teléfono">
+                                </div>
+                            </div>
 
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="apellido">Apellido</label>
-                                        <input type="text" class="form-control" id="apellido" placeholder="Escribe tu apellido">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="apellido">Apellido</label>
-                                        <input type="text" class="form-control" id="apellido" placeholder="Escribe tu apellido">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Correo</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Escribe tu email">
+                            <div class="mb-3">
+                                <label for="campus" class="form-label">Tipos de arreglo</label>
+                                <select class="form-select" id="campus">
+                                    <option selected disabled>Seleccione una opción</option>
+                                    <option>Estoy arrepentido</option>
+                                    <option>Desfunación máxima</option>
+                                    <option>Por si la pongo</option>
+                                </select>
+                            </div>
 
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="telefono">Telefono</label>
-                                        <input type="text" class="form-control" id="telefono" placeholder="Escribe tu telefono">
-                                    </div>
+                            <div class="mb-3">
+                                <label class="form-label d-block">¿Incluye Serenata?</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">Sí</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">No</label>
+                                </div>
+                            </div>
 
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Tipos de arreglo</label>
-                                        <select class="form-control" id="campus">
-                                        <option selected>Seleccione una opción</option>
-                                        <option>Estoy arrepentido</option>
-                                        <option>Desfunacion máxima</option>
-                                        <option>Por si la pongo</option>
-                                        </select>
-                                    </div>
-                                    <label for="grupocheck">¿Incluye Serenata?</label>
-                                    <div id="grupocheck">
-                                        <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">Si</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                        <label class="form-check-label" for="inlineRadio2">No </label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cajatexto">Mas informacion</label>
-                                        <textarea class="form-control" id="cajatexto" rows="3"
-                                        placeholder="Danos mas informacion"></textarea>
-                                    </div>
-                                    <button type="reset" class="btn btn-secondary">Limpiar</button><br><br>
-                                    <button type="submit" class="btn btn-primary" onclick="enviarFormulario()">Enviar</button>
-                                    </form>
+                            <div class="mb-3">
+                                <label for="cajatexto" class="form-label">Más información</label>
+                                <textarea class="form-control" id="cajatexto" rows="3"
+                                    placeholder="Danos más información"></textarea>
+                            </div>
+
+                            <div class="d-flex justify-content-end gap-2 mt-4">
+                                <button type="reset" class="btn btn-outline-secondary">Limpiar</button>
+                                <button type="button" class="btn btn-primary"
+                                    onclick="enviarFormulario()">Enviar</button>
+                            </div>
+                        </form>
 
                         <!--<ul class="list-unstyled">
                             <li class="mb-3">
@@ -160,9 +171,20 @@
             </div>
         </div>
     </section>
+    
+    <div class="container-fluid mt-4 mb-5 px-xl-5">
+        <div class="card shadow border-0">
+            <div class="card-body p-4 text-center">
+                <h3 class="mb-4">Nuestra Ubicación</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11414.714448113593!2d-72.98402391004983!3d-41.49337931037041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96183bf477995c3b%3A0xa59e7b27d02b1c2d!2sUniversidad%20de%20Los%20Lagos%20Puerto%20Montt!5e0!3m2!1ses!2scl!4v1777587166968!5m2!1ses!2scl" class="w-100 rounded" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2023 Shen Arte Floral. Todos los derechos reservados.</p>
     </footer>
+    <script src="../js/funciones.js"></script>
 </body>
 
 </html>
