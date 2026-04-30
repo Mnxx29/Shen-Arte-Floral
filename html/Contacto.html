@@ -38,6 +38,7 @@
             <div>
                 <h2 class="mb-3">Cont&aacute;ctanos</h2>
                 <p class="lead mb-0">
+                    <h2>uno</h2>
                     En <strong>Shen Arte Floral</strong> somos una florer&iacute;a online de Puerto Montt dedicada a
                     crear
                     ramos, bouquets y arreglos florales para regalos, sorpresas y fechas especiales.
@@ -49,14 +50,65 @@
                 class="img-fluid rounded shadow-sm">
         </div>
 
-
-
         <div class="row g-4 align-items-start justify-content-center contact-message-row">
             <div class="col-12 col-lg-5">
                 <div class="card shadow border-0">
                     <div class="card-body p-4 text-center">
-                        <h3 class="mb-4">Canales de contacto</h3>
-                        <ul class="list-unstyled">
+                        <h3 class="mb-4">Formulario de contacto</h3>
+                                <form>
+                                    <div class="form-group">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" class="form-control" id="nombre" placeholder="Escribe tu nombre">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apellido">Apellido</label>
+                                        <input type="text" class="form-control" id="apellido" placeholder="Escribe tu apellido">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apellido">Apellido</label>
+                                        <input type="text" class="form-control" id="apellido" placeholder="Escribe tu apellido">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Correo</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Escribe tu email">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telefono">Telefono</label>
+                                        <input type="text" class="form-control" id="telefono" placeholder="Escribe tu telefono">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Tipos de arreglo</label>
+                                        <select class="form-control" id="campus">
+                                        <option selected>Seleccione una opción</option>
+                                        <option selected>Estoy arrepentido</option>
+                                        <option>Desfunacion máxima</option>
+                                        <option>Por si la pongo</option>
+                                        </select>
+                                    </div>
+                                    <label for="grupocheck">¿Incluye Serenata?</label>
+                                    <div id="grupocheck">
+                                        <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                        <label class="form-check-label" for="inlineRadio1">Si</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <label class="form-check-label" for="inlineRadio2">No </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cajatexto">Mas informacion</label>
+                                        <textarea class="form-control" id="cajatexto" rows="3"
+                                        placeholder="Danos mas informacion"></textarea>
+                                    </div>
+                                    <button type="reset" class="btn btn-secondary">Limpiar</button><br><br>
+                                    <button type="submit" class="btn btn-primary" onclick="enviarFormulario()">Enviar</button>
+                                    </form>
+
+                        <!--<ul class="list-unstyled">
                             <li class="mb-3">
                                 <strong>WhatsApp:</strong>
                                 <a href="https://wa.me/56912345678" target="_blank" rel="noopener">+56 9 1234 5678</a>
@@ -79,7 +131,7 @@
                             <li>
                                 <strong>Zona:</strong> Puerto Montt, Chile.
                             </li>
-                        </ul>
+                        </ul>-->
                     </div>
                 </div>
             </div>
