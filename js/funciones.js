@@ -1,116 +1,158 @@
-// IMPORTANTE:
-//  Función auxiliar para validar el RUT basado en el algoritmo de módulo 11
+// ============================================================
+//  funciones.js  –  Validación con jQuery (sin alert)
+// ============================================================
+
+// Función auxiliar para validar el RUT chileno (módulo 11)
 function validarRut(rut) {
-    if (rut == "") return false;
+    if (rut === "") return false;
     rut = rut.replace(/\./g, "").toUpperCase();
-    if (rut.indexOf("-") == -1) return false;
+    if (rut.indexOf("-") === -1) return false;
     var partes = rut.split("-");
     var cuerpo = partes[0];
     var dvIngresado = partes[1];
     var suma = 0;
     var multiplicador = 2;
     for (var i = cuerpo.length - 1; i >= 0; i--) {
-        suma = suma + (cuerpo.charAt(i) * multiplicador);
-        multiplicador = multiplicador + 1;
-        if (multiplicador > 7) multiplicador = 2;
+        suma += cuerpo.charAt(i) * multiplicador;
+        multiplicador = (multiplicador >= 7) ? 2 : multiplicador + 1;
     }
     var resto = suma % 11;
     var resultado = 11 - resto;
-    var dvEsperado = "";
-    if (resultado == 11) dvEsperado = "0";
-    else if (resultado == 10) dvEsperado = "K";
-    else dvEsperado = resultado.toString();
-
-    if (dvEsperado == dvIngresado) return true;
-    else return false;
+    var dvEsperado = resultado === 11 ? "0" : resultado === 10 ? "K" : resultado.toString();
+    return dvEsperado === dvIngresado;
 }
 
-// Evento blur para validación instantánea
-window.onload = function () {
-    var campoRut = document.getElementById("rut");
-    if (campoRut) {
-        campoRut.addEventListener('blur', function () {
-            var valor = campoRut.value;
-            if (valor != "") {
-                if (validarRut(valor) == false) {
-                    alert("Atención: El RUT que acabas de escribir no es válido.");
-                    campoRut.style.borderColor = "red";
-                } else {
-                    campoRut.style.borderColor = "green";
-                }
-            } else {
-                campoRut.style.borderColor = "";
+// Muestra un mensaje de error debajo del campo
+function mostrarError($campo, mensaje) {
+    $campo.addClass("is-invalid").removeClass("is-valid");
+    var $feedback = $campo.siblings(".form-error-msg");
+    if ($feedback.length === 0) {
+        $campo.after('<span class="form-error-msg text-danger small mt-1 d-block"></span>');
+        $feedback = $campo.siblings(".form-error-msg");
+    }
+    $feedback.text("Debe rellenar " + mensaje);
+}
+
+// Limpia el error de un campo
+function limpiarError($campo) {
+    $campo.removeClass("is-invalid").addClass("is-valid");
+    $campo.siblings(".form-error-msg").text("");
+}
+
+// ============================================================
+$(document).ready(function () {
+
+    // --- Validación en tiempo real (blur) ---
+
+    // RUT: validación extra de formato
+    $("#rut").on("blur", function () {
+        var val = $(this).val().trim();
+        if (val === "") {
+            mostrarError($(this), "su RUT");
+        } else if (!validarRut(val)) {
+            $(this).addClass("is-invalid").removeClass("is-valid");
+            var $fb = $(this).siblings(".form-error-msg");
+            if ($fb.length === 0) {
+                $(this).after('<span class="form-error-msg text-danger small mt-1 d-block"></span>');
+                $fb = $(this).siblings(".form-error-msg");
             }
-        });
-    }
-}
+            $fb.text("El RUT no es válido. Formato: 12345678-9");
+        } else {
+            limpiarError($(this));
+        }
+    });
 
-function enviarFormulario() {
-    // Obtener los valores de los elementos
-    var nombre = document.getElementById("nombre").value;
-    var apellido = document.getElementById("apellido").value;
-    var rut = document.getElementById("rut").value;
-    var email = document.getElementById("email").value;
-    var telefono = document.getElementById("telefono").value;
-    var campus = document.getElementById("campus").value;
-    var radio1 = document.getElementById("inlineRadio1").checked;
-    var radio2 = document.getElementById("inlineRadio2").checked;
-    var cajatexto = document.getElementById("cajatexto").value;
+    // Campos de texto simples
+    $("#nombre, #apellido, #email, #telefono, #cantidad, #fechaEntrega").on("blur", function () {
+        if ($(this).val().trim() === "") {
+            var etiqueta = $(this).prev("label").text().replace("*", "").trim().toLowerCase();
+            mostrarError($(this), etiqueta);
+        } else {
+            limpiarError($(this));
+        }
+    });
 
-    // Validar nombre
-    if (nombre == "") {
-        alert("Por favor, debe ingresar un nombre.");
-        return;
-    }
+    // Selects
+    $("#ocasion, #tipoArreglo, #modalidadEntrega").on("change", function () {
+        if ($(this).val() === "") {
+            var etiqueta = $(this).prev("label").text().replace("*", "").trim().toLowerCase();
+            mostrarError($(this), etiqueta);
+        } else {
+            limpiarError($(this));
+        }
+    });
 
-    // Validar apellido
-    if (apellido == "") {
-        alert("Por favor, debe ingresar un apellido.");
-        return;
-    }
 
-    // Validar rut vacío
-    if (rut == "") {
-        alert("Por favor, debe ingresar su rut.");
-        return;
-    }
 
-    // Validar rut matemáticamente
-    if (validarRut(rut) == false) {
-        alert("El RUT ingresado no es válido. Recuerda incluir el guión (Ej: 12345678-9).");
-        return;
-    }
+    // --- Envío del formulario ---
+    $("#btnEnviar").on("click", function () {
+        var valido = true;
 
-    // Validar email
-    if (email == "") {
-        alert("Por favor, debe ingresar su correo electrónico.");
-        return;
-    }
+        // Helper para validar campo requerido
+        function requerido($campo, etiqueta) {
+            if ($campo.val().trim() === "") {
+                mostrarError($campo, etiqueta);
+                valido = false;
+            } else {
+                limpiarError($campo);
+            }
+        }
 
-    // Validar telefono
-    if (telefono == "") {
-        alert("Por favor, debe ingresar su teléfono.");
-        return;
-    }
+        requerido($("#nombre"),     "su nombre");
+        requerido($("#apellido"),   "su apellido");
+        requerido($("#email"),      "su correo");
+        requerido($("#telefono"),   "su teléfono");
+        requerido($("#ocasion"),    "la ocasión");
+        requerido($("#tipoArreglo"),"el tipo de arreglo");
+        requerido($("#cantidad"),   "la cantidad");
+        requerido($("#fechaEntrega"),"la fecha de entrega");
+        requerido($("#modalidadEntrega"), "la modalidad de entrega");
 
-    // Validar select (tipos de arreglo)
-    if (campus == "Seleccione una opción") {
-        alert("Por favor, seleccione un tipo de arreglo florar.");
-        return;
-    }
+        // RUT
+        var rutVal = $("#rut").val().trim();
+        if (rutVal === "") {
+            mostrarError($("#rut"), "su RUT");
+            valido = false;
+        } else if (!validarRut(rutVal)) {
+            $("#rut").addClass("is-invalid").removeClass("is-valid");
+            var $fb = $("#rut").siblings(".form-error-msg");
+            if ($fb.length === 0) {
+                $("#rut").after('<span class="form-error-msg text-danger small mt-1 d-block"></span>');
+                $fb = $("#rut").siblings(".form-error-msg");
+            }
+            $fb.text("El RUT no es válido. Formato: 12345678-9");
+            valido = false;
+        } else {
+            limpiarError($("#rut"));
+        }
 
-    // Validar radios (serenata)
-    if (radio1 == false && radio2 == false) {
-        alert("Por favor, debe seleccionar si incluye serenata o no.");
-        return;
-    }
+        if (valido) {
+            // Mostrar modal de éxito
+            var myModal = new bootstrap.Modal(document.getElementById('modalExito'));
+            myModal.show();
+            
+            // Limpiar formulario cuando el modal se oculte
+            $('#modalExito').on('hidden.bs.modal', function () {
+                $("#formPedido")[0].reset();
+                $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
+                $(".form-error-msg").text("");
+            });
+        } else {
+            // Scroll al primer error
+            var $primerError = $(".is-invalid").first();
+            if ($primerError.length) {
+                $("html, body").animate({
+                    scrollTop: $primerError.offset().top - 120
+                }, 400);
+            }
+        }
+    });
 
-    // Validar caja de texto (mas informacion)
-    if (cajatexto == "") {
-        alert("Por favor, debe darnos más información.");
-        return;
-    }
-
-    // Si pasa todas las validaciones
-    alert("¡Formulario enviado con éxito! Nos contactaremos pronto.");
-}
+    // Limpiar formulario con botón reset
+    $("#btnLimpiar").on("click", function () {
+        $("#formPedido")[0].reset();
+        $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
+        $(".form-error-msg").text("");
+        $("#mensajeExito").addClass("d-none");
+    });
+});

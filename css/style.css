@@ -17,7 +17,6 @@ body {
   line-height: 1.6;
 }
 
-
 header {
   background-color: var(--secondary-color);
   text-align: center;
@@ -58,7 +57,6 @@ header img {
   font-style: italic;
 }
 
-
 nav {
   background-color: #ffffff;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -71,6 +69,7 @@ nav {
 nav ul {
   display: flex;
   justify-content: center;
+  align-items: center;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -111,6 +110,25 @@ nav a:hover::after {
   width: 100%;
 }
 
+/* NUEVA CLASE PARA DESTACAR EL ENLACE DE PEDIDO */
+nav a.nav-highlight {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(212, 163, 115, 0.3);
+}
+
+nav a.nav-highlight::after {
+  display: none;
+}
+
+nav a.nav-highlight:hover {
+  background-color: #c09060;
+  color: white;
+  transform: translateY(-2px);
+}
 
 body>img[alt="banner"] {
   width: 100% !important;
@@ -119,13 +137,11 @@ body>img[alt="banner"] {
   display: block;
 }
 
-
 section {
   max-width: 1200px;
   margin: 5rem auto;
   padding: 0 2rem;
 }
-
 
 section>div:first-child {
   display: flex;
@@ -140,11 +156,26 @@ section>div:first-child {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
 }
 
+.contact-page > div:first-child,
+.productos-page > div:first-child,
+.servicios-page > div:first-child {
+  display: flex;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+}
+
 @media (min-width: 768px) {
   section>div:first-child {
     gap: 3rem;
     margin-bottom: 5rem;
     padding: 3rem;
+  }
+  .contact-page > div:first-child,
+  .productos-page > div:first-child,
+  .servicios-page > div:first-child {
+    padding: 0;
+    margin-bottom: 3rem;
   }
 }
 
@@ -153,6 +184,14 @@ section>div:first-child p {
   color: #555;
   flex: 1;
   min-width: 300px;
+}
+
+.contact-page > div:first-child p,
+.productos-page > div:first-child p,
+.servicios-page > div:first-child p {
+  font-size: inherit;
+  flex: none;
+  min-width: 0;
 }
 
 section>div:first-child img {
@@ -169,7 +208,6 @@ section>div:first-child img:hover {
   transform: translateY(-8px);
 }
 
-
 section>div:nth-child(2) {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -183,6 +221,7 @@ section>div:nth-child(2) {
 
 .contact-page .contact-message-row > [class*="col-"] {
   display: flex;
+  flex-direction: column;
 }
 
 .contact-page .contact-message-row .card {
@@ -251,7 +290,6 @@ section>div:nth-child(2) img:hover {
   line-height: 1.6;
 }
 
-
 footer {
   background-color: var(--dark-color);
   color: #fefae0;
@@ -267,7 +305,6 @@ footer p {
   font-weight: 300;
   letter-spacing: 0.5px;
 }
-
 
 a {
   text-decoration: none;
