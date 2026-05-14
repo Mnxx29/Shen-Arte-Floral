@@ -22,6 +22,18 @@ function validarRut(rut) {
     return dvEsperado === dvIngresado;
 }
 
+// Función para validar teléfono chileno
+function validarTelefono(telefono) {
+    telefono = telefono.replace(/\s+/g, "");
+
+    // Acepta:
+    // +56912345678
+    // 912345678
+    var regex = /^(\+56)?9\d{8}$/;
+
+    return regex.test(telefono);
+}
+
 // Muestra un mensaje de error debajo del campo
 function mostrarError($campo, mensaje) {
     $campo.addClass("is-invalid").removeClass("is-valid");
@@ -63,14 +75,36 @@ $(document).ready(function () {
     });
 
     // Campos de texto simples
-    $("#nombre, #apellido, #email, #telefono, #cantidad, #fechaEntrega").on("blur", function () {
-        if ($(this).val().trim() === "") {
-            var etiqueta = $(this).prev("label").text().replace("*", "").trim().toLowerCase();
-            mostrarError($(this), etiqueta);
-        } else {
-            limpiarError($(this));
+    $("#nombre, #apellido, #email, #cantidad, #fechaEntrega").on("blur", function () {
+    if ($(this).val().trim() === "") {
+        var etiqueta = $(this).prev("label").text().replace("*", "").trim().toLowerCase();
+        mostrarError($(this), etiqueta);
+    } else {
+        limpiarError($(this));
+    }
+});
+
+// Validación teléfono
+$("#telefono").on("blur", function () {
+    var telefono = $(this).val().trim();
+
+    if (telefono === "") {
+        mostrarError($(this), "su teléfono");
+    } else if (!validarTelefono(telefono)) {
+        $(this).addClass("is-invalid").removeClass("is-valid");
+
+        var $fb = $(this).siblings(".form-error-msg");
+
+        if ($fb.length === 0) {
+            $(this).after('<span class="form-error-msg text-danger small mt-1 d-block"></span>');
+            $fb = $(this).siblings(".form-error-msg");
         }
-    });
+
+        $fb.text("Ingrese un teléfono válido. Ej: +56912345678");
+    } else {
+        limpiarError($(this));
+    }
+});
 
     // Selects
     $("#ocasion, #tipoArreglo, #modalidadEntrega").on("change", function () {
@@ -101,7 +135,29 @@ $(document).ready(function () {
         requerido($("#nombre"),     "su nombre");
         requerido($("#apellido"),   "su apellido");
         requerido($("#email"),      "su correo");
-        requerido($("#telefono"),   "su teléfono");
+        // Teléfono
+var telVal = $("#telefono").val().trim();
+
+if (telVal === "") {
+    mostrarError($("#telefono"), "su teléfono");
+    valido = false;
+} else if (!validarTelefono(telVal)) {
+
+    $("#telefono").addClass("is-invalid").removeClass("is-valid");
+
+    var $fbTel = $("#telefono").siblings(".form-error-msg");
+
+    if ($fbTel.length === 0) {
+        $("#telefono").after('<span class="form-error-msg text-danger small mt-1 d-block"></span>');
+        $fbTel = $("#telefono").siblings(".form-error-msg");
+    }
+
+    $fbTel.text("Ingrese un teléfono válido. Ej: +56912345678");
+    valido = false;
+
+} else {
+    limpiarError($("#telefono"));
+}
         requerido($("#ocasion"),    "la ocasión");
         requerido($("#tipoArreglo"),"el tipo de arreglo");
         requerido($("#cantidad"),   "la cantidad");
