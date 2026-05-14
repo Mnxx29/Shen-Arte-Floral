@@ -75,7 +75,7 @@ $(document).ready(function () {
     });
 
     // Campos de texto simples
-    $("#nombre, #apellido, #email, #cantidad, #fechaEntrega").on("blur", function () {
+    $("#nombre, #apellido, #email, #ciudad, #direccion, #cantidad, #fechaEntrega").on("blur", function () {
     if ($(this).val().trim() === "") {
         var etiqueta = $(this).prev("label").text().replace("*", "").trim().toLowerCase();
         mostrarError($(this), etiqueta);
@@ -135,6 +135,8 @@ $("#telefono").on("blur", function () {
         requerido($("#nombre"),     "su nombre");
         requerido($("#apellido"),   "su apellido");
         requerido($("#email"),      "su correo");
+        requerido($("#ciudad"),     "su ciudad");
+        requerido($("#direccion"),  "su dirección");
         // Teléfono
 var telVal = $("#telefono").val().trim();
 
