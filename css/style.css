@@ -8,6 +8,22 @@
   --bg-color: #fcfbfa;
 }
 
+/* Opciones de fondos para probar */
+.bg-floral-gradient {
+  /* Gradiente muy sutil entre el amarillo del header (#fefae0) y un tono muy claro derivado del verde del footer */
+  background: linear-gradient(180deg, var(--secondary-color) 0%, #e4e7d3 100%) !important;
+  background-attachment: fixed !important;
+}
+
+.bg-floral-pattern {
+  /* Patrón de puntos visible y elegante (Polka dot) */
+  background-color: #fefae0 !important;
+  background-image: radial-gradient(rgba(209, 70, 116, 0.4) 2px, transparent 2px), radial-gradient(rgba(209, 70, 116, 0.4) 2px, transparent 2px) !important;
+  background-size: 40px 40px !important;
+  background-position: 0 0, 20px 20px !important;
+  background-attachment: fixed !important;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--bg-color);
@@ -55,6 +71,10 @@ header img {
   color: #606c38;
   margin: 0;
   font-style: italic;
+}
+
+h1, h2, h3, h4, h5, h6, .font-playfair {
+  font-family: 'Playfair Display', serif !important;
 }
 
 nav {
@@ -143,128 +163,29 @@ section {
   padding: 0 2rem;
 }
 
-section>div:first-child {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-}
+/* ==========================================================================
+   UTILIDADES REUTILIZABLES
+   ========================================================================== */
 
-.contact-page > div:first-child,
-.productos-page > div:first-child,
-.servicios-page > div:first-child {
-  display: flex;
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
-}
+/* Imágenes */
+.img-carousel { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.img-card-custom { height: 250px; object-fit: cover; }
+.img-feature-intro { max-height: 350px; object-fit: cover; }
+.img-feature-showcase { max-height: 400px; object-fit: cover; }
+.img-feature-shadow { max-height: 380px; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 
-@media (min-width: 768px) {
-  section>div:first-child {
-    gap: 3rem;
-    margin-bottom: 5rem;
-    padding: 3rem;
-  }
-  .contact-page > div:first-child,
-  .productos-page > div:first-child,
-  .servicios-page > div:first-child {
-    padding: 0;
-    margin-bottom: 3rem;
-  }
-}
+/* Textos y Colores */
+.text-brand-pink { color: #d14674 !important; }
+.text-brand-pink-alt { color: #e83e8c !important; }
+.text-footer-light { color: #fefae0 !important; opacity: 0.8; }
+.text-primary-custom { color: var(--primary-color) !important; }
+.text-dark-theme { color: var(--dark-color) !important; }
 
-section>div:first-child p {
-  font-size: 1.2rem;
-  color: #555;
-  flex: 1;
-  min-width: 300px;
-}
-
-.contact-page > div:first-child p,
-.productos-page > div:first-child p,
-.servicios-page > div:first-child p {
-  font-size: inherit;
-  flex: none;
-  min-width: 0;
-}
-
-section>div:first-child img {
-  width: 100% !important;
-  max-width: 350px;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s ease;
-}
-
-section>div:first-child img:hover {
-  transform: translateY(-8px);
-}
-
-section>div:nth-child(2) {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2.5rem;
-}
-
-/* Keep contact page message cards on Bootstrap row/flex layout. */
-.contact-page .contact-message-row {
-  display: flex !important;
-}
-
-.contact-page .contact-message-row > [class*="col-"] {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact-page .contact-message-row .card {
-  width: 100%;
-}
-
-section>div:nth-child(2) img {
-  width: 100% !important;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s ease;
-  cursor: pointer;
-}
-
-section>div:nth-child(2) img:hover {
-  transform: scale(1.03) translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-}
-
-.home-experiencias {
-  max-width: 1200px;
-}
-
-.home-experiencias > div:first-child {
-  display: block;
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
-  margin-bottom: 2rem;
-}
-
-.home-experiencias > div:nth-child(2) {
-  display: flex !important;
-  flex-wrap: wrap;
-  grid-template-columns: none !important;
-  gap: 0 !important;
-}
-
-.home-experiencias > div:nth-child(2) > [class*="col-"] {
-  display: flex;
-}
+/* Tipografía y Espaciado adicionales */
+.subtitle-form { font-size: 0.75rem; letter-spacing: 0.08em; }
+.list-spaced { line-height: 1.8; }
+.icon-huge { font-size: 4rem; }
+.text-md-custom { font-size: 1.1rem; }
 
 .home-experiencias .experiencia-card {
   width: 100%;

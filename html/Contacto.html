@@ -20,7 +20,7 @@
     <script src="../js/funciones.js"></script>
 </head>
 
-<body>
+<body class="bg-floral-gradient">
     <header class="d-flex align-items-center justify-content-center flex-wrap">
         <img src="https://storage.googleapis.com/redfloral-bucket/company/61/avatar/61-avatar-1749134335.png"
             alt="Logo de Shen Arte Floral" class="mb-0 me-4">
@@ -95,8 +95,7 @@
                         <form id="formPedido" class="text-start" novalidate>
 
                             <!-- === Datos del cliente === -->
-                            <h6 class="fw-semibold text-uppercase text-muted mb-3 mt-2"
-                                style="font-size:.75rem;letter-spacing:.08em;">
+                            <h6 class="fw-semibold text-uppercase text-muted mb-3 mt-2 subtitle-form">
                                 Datos del cliente
                             </h6>
 
@@ -142,8 +141,7 @@
                             <hr class="my-4">
 
                             <!-- === Detalles del pedido === -->
-                            <h6 class="fw-semibold text-uppercase text-muted mb-3"
-                                style="font-size:.75rem;letter-spacing:.08em;">
+                            <h6 class="fw-semibold text-uppercase text-muted mb-3 subtitle-form">
                                 Detalles del pedido
                             </h6>
 
@@ -239,7 +237,7 @@
                         <p class="small text-muted mb-2">
                             Servicio especializado para <strong>eventos corporativos</strong> y decoración.
                         </p>
-                        <ul class="small text-muted mb-0 ps-3" style="line-height: 1.8;">
+                        <ul class="small text-muted mb-0 ps-3 list-spaced">
                             <li>Cotización por volumen</li>
                             <li>Emisión de factura</li>
                             <li>Diseño con branding</li>
@@ -253,7 +251,7 @@
                         <h4 class="mb-3 fs-6 text-primary-emphasis">📍 Nuestra Ubicación</h4>
                         <iframe
                             src="https://maps.google.com/maps?width=100%25&amp;height=250&amp;hl=es&amp;q=SHEN%20Arte%20Floral,%20Huasco%206%20B,%20Puerto%20montt&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                            class="w-100 rounded" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                            class="w-100 rounded border-0" height="250" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
@@ -266,26 +264,26 @@
         <div class="container">
             <div class="row g-4 text-center text-md-start align-items-center">
                 <div class="col-md-4">
-                    <h5 class="mb-2" style="color: var(--primary-color);">Shen Arte Floral</h5>
-                    <p class="small mb-0" style="color: #fefae0; opacity: 0.8;">Entregando emociones y creando recuerdos
+                    <h5 class="mb-2 text-primary-custom">Shen Arte Floral</h5>
+                    <p class="small mb-0 text-footer-light">Entregando emociones y creando recuerdos
                         inolvidables en Puerto Montt y alrededores.</p>
                 </div>
                 <div class="col-md-4 text-center">
-                    <h5 class="mb-2" style="color: var(--primary-color);">Contacto</h5>
-                    <ul class="list-unstyled small mb-0" style="color: #fefae0; opacity: 0.8;">
+                    <h5 class="mb-2 text-primary-custom">Contacto</h5>
+                    <ul class="list-unstyled small mb-0 text-footer-light">
                         <li class="mb-1">📍 Huasco 6 B, Puerto Montt</li>
                         <li class="mb-1">📱 +56 9 1234 5678</li>
                         <li>✉️ contacto@shenartefloral.cl</li>
                     </ul>
                 </div>
                 <div class="col-md-4 text-center text-md-end">
-                    <h5 class="mb-2" style="color: var(--primary-color);">Síguenos</h5>
+                    <h5 class="mb-2 text-primary-custom">Síguenos</h5>
                     <div class="d-flex justify-content-center justify-content-md-end gap-3 fs-4">
-                        <a href="https://www.instagram.com/shenartefloral/" target="_blank" class="text-decoration-none"
-                            title="Instagram" style="color: #fefae0;">📷</a>
-                        <a href="#" class="text-decoration-none" title="Facebook" style="color: #fefae0;">📘</a>
-                        <a href="#" class="text-decoration-none" title="Twitter" style="color: #fefae0;">🐦</a>
-                        <a href="#" class="text-decoration-none" title="WhatsApp" style="color: #fefae0;">💬</a>
+                        <a href="https://www.instagram.com/shenartefloral/" target="_blank" class="text-decoration-none text-footer-light"
+                            title="Instagram">📷</a>
+                        <a href="#" class="text-decoration-none text-footer-light" title="Facebook">📘</a>
+                        <a href="#" class="text-decoration-none text-footer-light" title="Twitter">🐦</a>
+                        <a href="#" class="text-decoration-none text-footer-light" title="WhatsApp">💬</a>
                     </div>
                 </div>
             </div>
@@ -298,16 +296,16 @@
     <!-- Modal de Éxito -->
     <div class="modal fade" id="modalExito" tabindex="-1" aria-labelledby="modalExitoLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 shadow" style="border-radius: 16px;">
+            <div class="modal-content border-0 shadow rounded-4">
                 <div class="modal-header border-0 pb-0 justify-content-center mt-3">
-                    <div class="text-success" style="font-size: 4rem;">
+                    <div class="text-success icon-huge">
                         ✅
                     </div>
                 </div>
                 <div class="modal-body text-center pt-2 pb-4 px-4">
-                    <h4 class="modal-title mb-3 fw-bold" id="modalExitoLabel" style="color: var(--primary-color);">
+                    <h4 class="modal-title mb-3 fw-bold text-primary-custom" id="modalExitoLabel">
                         ¡Pedido Enviado con Éxito!</h4>
-                    <p class="text-muted mb-0" style="font-size: 1.1rem;">Tu solicitud ha sido procesada correctamente.
+                    <p class="text-muted mb-0 text-md-custom">Tu solicitud ha sido procesada correctamente.
                         Nos contactaremos contigo a la brevedad para confirmar los detalles de tu arreglo.</p>
                 </div>
                 <div class="modal-footer border-0 pt-0 justify-content-center mb-3">
