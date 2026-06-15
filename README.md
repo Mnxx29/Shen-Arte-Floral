@@ -45,9 +45,9 @@ Al ser un proyecto Front-end estático, su ejecución es muy sencilla y no requi
 
 Este proyecto ha sido desarrollado en conjunto por:
 
-* **Germán Aravena**
-* **Hector Briceño**
-* **Victor Henriquez**
+* **Germán Aravena** @mnxx29  
+* **Hector Briceño** @hecandri-a11y
+* **Victor Henriquez** @vhenrquez-hub
 
 ## 📞 Contacto
 
