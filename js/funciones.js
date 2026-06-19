@@ -1,6 +1,24 @@
 // ============================================================
-//  funciones.js  –  Validación con jQuery (sin alert)
+//  funciones.js  –  Validación con jQuery y Firebase
 // ============================================================
+
+// ============================================================
+//  CONFIGURACIÓN DE FIREBASE (Reemplaza con tus credenciales)
+// ============================================================
+const firebaseConfig = {
+    apiKey: "AIzaSyB1oAS1V5B5I3EGOJZgprwngYUtDA_x_OM",
+    authDomain: "shen-arte-floral.firebaseapp.com",
+    projectId: "shen-arte-floral",
+    storageBucket: "shen-arte-floral.firebasestorage.app",
+    messagingSenderId: "48052446837",
+    appId: "1:48052446837:web:e071259b8183dc6dcbba3c",
+    measurementId: "G-XQHMS8EQSF"
+};
+
+// Inicializar Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
 
 // Función auxiliar para validar el RUT chileno (módulo 11)
 function validarRut(rut) {
@@ -185,16 +203,55 @@ if (telVal === "") {
         }
 
         if (valido) {
-            // Mostrar modal de éxito
-            var myModal = new bootstrap.Modal(document.getElementById('modalExito'));
-            myModal.show();
-            
-            // Limpiar formulario cuando el modal se oculte
-            $('#modalExito').on('hidden.bs.modal', function () {
-                $("#formPedido")[0].reset();
-                $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
-                $(".form-error-msg").text("");
-            });
+            // Cambiar texto de botón para feedback visual
+            var $btn = $("#btnEnviar");
+            var originalText = $btn.text();
+            $btn.prop("disabled", true).text("Enviando...");
+
+            // Recopilar datos del formulario
+            var datosPedido = {
+                nombre: $("#nombre").val().trim(),
+                apellido: $("#apellido").val().trim(),
+                rut: $("#rut").val().trim(),
+                empresa: $("#empresa").val().trim(),
+                email: $("#email").val().trim(),
+                telefono: $("#telefono").val().trim(),
+                ciudad: $("#ciudad").val().trim(),
+                direccion: $("#direccion").val().trim(),
+                ocasion: $("#ocasion").val(),
+                tipoArreglo: $("#tipoArreglo").val(),
+                cantidad: parseInt($("#cantidad").val()) || 1,
+                fechaEntrega: $("#fechaEntrega").val(),
+                modalidadEntrega: $("#modalidadEntrega").val(),
+                dedicatoria: $("#dedicatoria").val().trim(),
+                observaciones: $("#observaciones").val().trim(),
+                fechaCreacion: firebase.firestore.FieldValue.serverTimestamp()
+            };
+
+            // Guardar en Firestore (colección "pedidos")
+            db.collection("pedidos").add(datosPedido)
+                .then(function (docRef) {
+                    console.log("Pedido guardado exitosamente con ID: ", docRef.id);
+                    
+                    // Restaurar botón
+                    $btn.prop("disabled", false).text(originalText);
+
+                    // Mostrar modal de éxito
+                    var myModal = new bootstrap.Modal(document.getElementById('modalExito'));
+                    myModal.show();
+                    
+                    // Limpiar formulario cuando el modal se oculte
+                    $('#modalExito').on('hidden.bs.modal', function () {
+                        $("#formPedido")[0].reset();
+                        $(".is-valid, .is-invalid").removeClass("is-valid is-invalid");
+                        $(".form-error-msg").text("");
+                    });
+                })
+                .catch(function (error) {
+                    console.error("Error al guardar en Firebase: ", error);
+                    $btn.prop("disabled", false).text(originalText);
+                    alert("Ocurrió un error al enviar tu pedido: " + error.message + "\nPor favor, verifica la configuración de Firebase y las reglas de seguridad.");
+                });
         } else {
             // Scroll al primer error
             var $primerError = $(".is-invalid").first();
