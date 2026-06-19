@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Germán Aravena, Hector Briceño, Victor Henriquez">
+    <meta name="description" content="Panel de Administración para gestionar los pedidos de Shen Arte Floral.">
+    <title>Administración - Shen Arte Floral</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../img/favicon.ico">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase SDK (Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <!-- Custom JS for Admin -->
+    <script src="../js/admin.js"></script>
+</head>
+
+<body class="bg-floral-gradient">
+    <header class="d-flex align-items-center justify-content-center flex-wrap">
+        <img src="https://storage.googleapis.com/redfloral-bucket/company/61/avatar/61-avatar-1749134335.png"
+            alt="Logo de Shen Arte Floral" class="mb-0 me-4">
+        <div class="text-start">
+            <h1 id="SHEN" class="mb-0">Shen Arte Floral</h1>
+            <h2 class="titulo2 mt-1">Florería de Puerto Montt</h2>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Principal</a></li>
+            <li><a href="Servicios.html">Servicios</a></li>
+            <li><a href="Productos.html">Productos</a></li>
+            <li><a href="Contacto.html">Pide tu arreglo</a></li>
+            <li><a href="admin.html" class="nav-highlight">Administrar</a></li>
+        </ul>
+    </nav>
+
+    <main class="container my-5">
+        <div class="card shadow-sm border-0 mb-4 bg-light">
+            <div class="card-body p-4 text-center">
+                <h3 class="fw-bold text-primary-custom mb-2">🔑 Panel de Control de Pedidos</h3>
+                <p class="text-muted mb-0">Visualiza, actualiza y elimina las órdenes registradas en el sistema en tiempo real.</p>
+            </div>
+        </div>
+
+        <!-- Tabla de Pedidos -->
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped mb-0 align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col" class="py-3">Cliente</th>
+                                <th scope="col" class="py-3">RUT</th>
+                                <th scope="col" class="py-3">Email</th>
+                                <th scope="col" class="py-3">Teléfono</th>
+                                <th scope="col" class="py-3">Tipo Arreglo</th>
+                                <th scope="col" class="py-3 text-center">Cant.</th>
+                                <th scope="col" class="py-3">Entrega</th>
+                                <th scope="col" class="py-3">F. Creación</th>
+                                <th scope="col" class="py-3 text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaPedidosCuerpo">
+                            <!-- Spinner de carga -->
+                            <tr id="cargandoSpinner">
+                                <td colspan="9" class="text-center py-5">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Cargando...</span>
+                                    </div>
+                                    <p class="mt-2 text-muted mb-0">Cargando pedidos desde la base de datos...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-custom py-5 mt-5">
+        <div class="container">
+            <div class="row g-4 text-center text-md-start align-items-center">
+                <div class="col-md-4">
+                    <h5 class="mb-2 text-primary-custom">Shen Arte Floral</h5>
+                    <p class="small mb-0 text-footer-light">Entregando emociones y creando recuerdos
+                        inolvidables en Puerto Montt y alrededores.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5 class="mb-2 text-primary-custom">Contacto</h5>
+                    <ul class="list-unstyled small mb-0 text-footer-light">
+                        <li class="mb-1">📍 Huasco 6 B, Puerto Montt</li>
+                        <li class="mb-1">📱 +56 9 1234 5678</li>
+                        <li>✉️ contacto@shenartefloral.cl</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <h5 class="mb-2 text-primary-custom">Síguenos</h5>
+                    <div class="d-flex justify-content-center justify-content-md-end gap-3 fs-4">
+                        <a href="https://www.instagram.com/shenartefloral/" target="_blank" class="text-decoration-none text-footer-light"
+                            title="Instagram">📷</a>
+                        <a href="#" class="text-decoration-none text-footer-light" title="Facebook">📘</a>
+                        <a href="#" class="text-decoration-none text-footer-light" title="Twitter">🐦</a>
+                        <a href="#" class="text-decoration-none text-footer-light" title="WhatsApp">💬</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4 pt-3 border-top border-secondary small">
+                <p>&copy; 2023 Shen Arte Floral. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL EDITAR PEDIDO -->
+    <div class="modal fade" id="modalEditarPedido" tabindex="-1" aria-labelledby="modalEditarPedidoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow rounded-4">
+                <div class="modal-header bg-light border-0 py-3">
+                    <h5 class="modal-title fw-bold text-primary-custom" id="modalEditarPedidoLabel">✏️ Editar Pedido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formEditarPedido">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="editNombre" class="form-label small fw-bold">Nombre *</label>
+                                <input type="text" class="form-control" id="editNombre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editApellido" class="form-label small fw-bold">Apellido *</label>
+                                <input type="text" class="form-control" id="editApellido" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editRut" class="form-label small fw-bold">RUT</label>
+                                <input type="text" class="form-control" id="editRut">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editEmail" class="form-label small fw-bold">Email *</label>
+                                <input type="email" class="form-control" id="editEmail" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editTelefono" class="form-label small fw-bold">Teléfono *</label>
+                                <input type="text" class="form-control" id="editTelefono" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editCiudad" class="form-label small fw-bold">Ciudad *</label>
+                                <input type="text" class="form-control" id="editCiudad" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="editDireccion" class="form-label small fw-bold">Dirección *</label>
+                                <input type="text" class="form-control" id="editDireccion" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editOcasion" class="form-label small fw-bold">Ocasión *</label>
+                                <select class="form-select" id="editOcasion" required>
+                                    <option value="Cumpleaños">Cumpleaños</option>
+                                    <option value="Aniversario">Aniversario</option>
+                                    <option value="Condolencias">Condolencias</option>
+                                    <option value="Amor">Amor / Romance</option>
+                                    <option value="Graduación">Graduación</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editTipoArreglo" class="form-label small fw-bold">Tipo de Arreglo *</label>
+                                <select class="form-select" id="editTipoArreglo" required>
+                                    <option value="Ramo de Rosas">Ramo de Rosas</option>
+                                    <option value="Florero con Mix de Flores">Florero con Mix de Flores</option>
+                                    <option value="Cesta de Flores">Cesta de Flores</option>
+                                    <option value="Arreglo Fúnebre">Arreglo Fúnebre</option>
+                                    <option value="Caja con Rosas">Caja con Rosas</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="editCantidad" class="form-label small fw-bold">Cantidad *</label>
+                                <input type="number" class="form-control" id="editCantidad" min="1" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="editFechaEntrega" class="form-label small fw-bold">Fecha Entrega *</label>
+                                <input type="date" class="form-control" id="editFechaEntrega" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="editModalidadEntrega" class="form-label small fw-bold">Modalidad Entrega *</label>
+                                <select class="form-select" id="editModalidadEntrega" required>
+                                    <option value="Despacho a domicilio">Despacho a domicilio</option>
+                                    <option value="Retiro en tienda">Retiro en tienda</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="editDedicatoria" class="form-label small fw-bold">Dedicatoria</label>
+                                <textarea class="form-control" id="editDedicatoria" rows="2"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="editObservaciones" class="form-label small fw-bold">Observaciones</label>
+                                <textarea class="form-control" id="editObservaciones" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-0 bg-light py-3 justify-content-end">
+                    <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary rounded-pill px-4" id="btnGuardarEdicion">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CONFIRMAR ELIMINAR -->
+    <div class="modal fade" id="modalConfirmarEliminar" tabindex="-1" aria-labelledby="modalConfirmarEliminarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow rounded-4">
+                <div class="modal-header border-0 pb-0 justify-content-center mt-3">
+                    <div class="text-danger icon-huge fs-1">
+                        ⚠️
+                    </div>
+                </div>
+                <div class="modal-body text-center pt-2 pb-4 px-4">
+                    <h4 class="modal-title mb-3 fw-bold text-dark" id="modalConfirmarEliminarLabel">¿Eliminar Pedido?</h4>
+                    <p class="text-muted mb-0">Esta acción no se puede deshacer. ¿Estás seguro de que deseas eliminar permanentemente este pedido de la base de datos?</p>
+                </div>
+                <div class="modal-footer border-0 pt-0 justify-content-center mb-3 gap-2">
+                    <button type="button" class="btn btn-secondary px-4 rounded-pill" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger px-4 rounded-pill" id="btnConfirmarEliminar">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
