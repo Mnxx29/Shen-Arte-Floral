@@ -35,7 +35,32 @@ $(document).ready(function () {
 
     // Evento al confirmar la eliminación de un pedido
     $("#btnConfirmarEliminar").on("click", ejecutarEliminacion);
+
+    // Evento de búsqueda en tiempo real
+    $("#buscadorPedidos").on("keyup", filtrarPedidos);
 });
+
+// ============================================================
+//  Filtro de búsqueda en tiempo real
+// ============================================================
+function filtrarPedidos() {
+    const query = $("#buscadorPedidos").val().toLowerCase().trim();
+    $("#tablaPedidosCuerpo tr").each(function () {
+        const $fila = $(this);
+        
+        // Ignorar el spinner de carga o el mensaje de "no hay pedidos"
+        if ($fila.attr("id") === "cargandoSpinner" || $fila.text().includes("No hay pedidos registrados")) {
+            return;
+        }
+
+        const textoFila = $fila.text().toLowerCase();
+        if (textoFila.includes(query)) {
+            $fila.show();
+        } else {
+            $fila.hide();
+        }
+    });
+}
 
 // ============================================================
 //  READ: Escuchar la colección de pedidos en tiempo real
