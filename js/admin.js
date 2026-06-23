@@ -21,14 +21,49 @@ const db = firebase.firestore();
 let pedidoIdSeleccionado = null;
 let modalEditar = null;
 let modalEliminar = null;
+let unsubscribePedidos = null;
 
 $(document).ready(function () {
     // Inicializar modales de Bootstrap
     modalEditar = new bootstrap.Modal(document.getElementById('modalEditarPedido'));
     modalEliminar = new bootstrap.Modal(document.getElementById('modalConfirmarEliminar'));
 
-    // Cargar y escuchar pedidos en tiempo real
-    escucharPedidos();
+    // Configurar observador del estado de autenticación
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // Usuario autenticado
+            $("#loginContainer").addClass("d-none");
+            $("#adminContent").removeClass("d-none");
+            $("#navLogout").removeClass("d-none");
+            
+            // Iniciar escucha en tiempo real
+            escucharPedidos();
+        } else {
+            // Usuario no autenticado
+            $("#adminContent").addClass("d-none");
+            $("#navLogout").addClass("d-none");
+            $("#loginContainer").removeClass("d-none");
+            
+            // Limpiar datos y detener escucha
+            if (unsubscribePedidos) {
+                unsubscribePedidos();
+                unsubscribePedidos = null;
+            }
+            $("#tablaPedidosCuerpo").empty();
+            
+            // Limpiar inputs del formulario de login
+            if ($("#formLogin").length) {
+                $("#formLogin")[0].reset();
+            }
+            $("#loginError").addClass("d-none").text("");
+        }
+    });
+
+    // Evento para procesar inicio de sesión
+    $("#formLogin").on("submit", ejecutarLogin);
+
+    // Evento para cerrar sesión
+    $("#btnCerrarSesion").on("click", ejecutarLogout);
 
     // Evento al guardar la edición de un pedido
     $("#btnGuardarEdicion").on("click", guardarEdicion);
@@ -39,6 +74,46 @@ $(document).ready(function () {
     // Evento de búsqueda en tiempo real
     $("#buscadorPedidos").on("keyup", filtrarPedidos);
 });
+
+// Función para manejar el inicio de sesión
+function ejecutarLogin(e) {
+    e.preventDefault();
+    const email = $("#loginEmail").val().trim();
+    const password = $("#loginPassword").val();
+    const $btn = $("#btnLogin");
+    const $errorDiv = $("#loginError");
+
+    $btn.prop("disabled", true).text("Ingresando...");
+    $errorDiv.addClass("d-none").text("");
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(function () {
+            $btn.prop("disabled", false).text("Ingresar");
+        })
+        .catch(function (error) {
+            console.error("Error al iniciar sesión: ", error);
+            $btn.prop("disabled", false).text("Ingresar");
+            
+            let mensajeError = "Ocurrió un error al iniciar sesión. Por favor intente nuevamente.";
+            if (error.code === "auth/invalid-credential" || error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
+                mensajeError = "Correo electrónico o contraseña incorrectos.";
+            } else if (error.code === "auth/invalid-email") {
+                mensajeError = "El formato del correo electrónico no es válido.";
+            }
+            
+            $errorDiv.text(mensajeError).removeClass("d-none");
+        });
+}
+
+// Función para manejar el cierre de sesión
+function ejecutarLogout(e) {
+    e.preventDefault();
+    firebase.auth().signOut()
+        .catch(function (error) {
+            console.error("Error al cerrar sesión: ", error);
+            alert("Error al cerrar sesión: " + error.message);
+        });
+}
 
 // ============================================================
 //  Filtro de búsqueda en tiempo real
@@ -69,8 +144,12 @@ function escucharPedidos() {
     const $tablaCuerpo = $("#tablaPedidosCuerpo");
     const $cargandoSpinner = $("#cargandoSpinner");
 
+    if (unsubscribePedidos) {
+        unsubscribePedidos();
+    }
+
     // onSnapshot mantiene los datos actualizados en tiempo real si hay cambios en Firebase
-    db.collection("pedidos").orderBy("fechaCreacion", "desc").onSnapshot(function (querySnapshot) {
+    unsubscribePedidos = db.collection("pedidos").orderBy("fechaCreacion", "desc").onSnapshot(function (querySnapshot) {
         $tablaCuerpo.empty();
         $cargandoSpinner.addClass("d-none");
 
