@@ -39,8 +39,8 @@
             <li><a href="Servicios.html">Servicios</a></li>
             <li><a href="Productos.html">Productos</a></li>
             <li><a href="Contacto.html">Pide tu arreglo</a></li>
-            <li><a href="admin.html" class="nav-highlight">Administrar</a></li>
-            <li id="navLogout" class="d-none"><a href="#" id="btnCerrarSesion" class="nav-highlight bg-danger border-0">Cerrar Sesión</a></li>
+            <li id="navLogout" class="d-none"><a href="#" id="btnCerrarSesion"
+                    class="nav-highlight bg-danger border-0">Cerrar Sesión</a></li>
         </ul>
     </nav>
 
@@ -58,17 +58,21 @@
                         <form id="formLogin">
                             <div class="mb-3">
                                 <label for="loginEmail" class="form-label small fw-bold">Correo Electrónico</label>
-                                <input type="email" id="loginEmail" class="form-control rounded-pill px-3" placeholder="admin@shenartefloral.cl" required>
+                                <input type="email" id="loginEmail" class="form-control rounded-pill px-3"
+                                    placeholder="admin@shenartefloral.cl" required>
                             </div>
                             <div class="mb-4">
                                 <label for="loginPassword" class="form-label small fw-bold">Contraseña</label>
-                                <input type="password" id="loginPassword" class="form-control rounded-pill px-3" placeholder="••••••••" required>
+                                <input type="password" id="loginPassword" class="form-control rounded-pill px-3"
+                                    placeholder="••••••••" required>
                             </div>
-                            <button type="submit" id="btnLogin" class="btn btn-primary w-100 rounded-pill py-2 fw-bold text-white border-0 btn-login-submit">
+                            <button type="submit" id="btnLogin"
+                                class="btn btn-primary w-100 rounded-pill py-2 fw-bold text-white border-0 btn-login-submit">
                                 Ingresar
                             </button>
                         </form>
-                        <div id="loginError" class="alert alert-danger d-none mt-3 rounded-3 small text-center" role="alert"></div>
+                        <div id="loginError" class="alert alert-danger d-none mt-3 rounded-3 small text-center"
+                            role="alert"></div>
                     </div>
                 </div>
             </div>
@@ -79,7 +83,8 @@
         <div class="card shadow-sm border-0 mb-4 bg-light">
             <div class="card-body p-4 text-center">
                 <h3 class="fw-bold text-primary-custom mb-2">🔑 Panel de Control de Pedidos</h3>
-                <p class="text-muted mb-0">Visualiza, actualiza y elimina las órdenes registradas en el sistema en tiempo real.</p>
+                <p class="text-muted mb-0">Visualiza, actualiza y elimina las órdenes registradas en el sistema en
+                    tiempo real.</p>
             </div>
         </div>
 
@@ -88,7 +93,8 @@
             <div class="col-md-8 col-lg-6 mx-auto">
                 <div class="input-group shadow-sm rounded-pill overflow-hidden border">
                     <span class="input-group-text bg-white border-0 ps-3">🔍</span>
-                    <input type="text" id="buscadorPedidos" class="form-control border-0 py-2 ps-1" placeholder="Buscar por nombre, email, RUT o teléfono...">
+                    <input type="text" id="buscadorPedidos" class="form-control border-0 py-2 ps-1"
+                        placeholder="Buscar por nombre, email, RUT o teléfono...">
                 </div>
             </div>
         </div>
@@ -148,8 +154,8 @@
                 <div class="col-md-4 text-center text-md-end">
                     <h5 class="mb-2 text-primary-custom">Síguenos</h5>
                     <div class="d-flex justify-content-center justify-content-md-end gap-3 fs-4">
-                        <a href="https://www.instagram.com/shenartefloral/" target="_blank" class="text-decoration-none text-footer-light"
-                            title="Instagram">📷</a>
+                        <a href="https://www.instagram.com/shenartefloral/" target="_blank"
+                            class="text-decoration-none text-footer-light" title="Instagram">📷</a>
                         <a href="#" class="text-decoration-none text-footer-light" title="Facebook">📘</a>
                         <a href="#" class="text-decoration-none text-footer-light" title="Twitter">🐦</a>
                         <a href="#" class="text-decoration-none text-footer-light" title="WhatsApp">💬</a>
@@ -163,11 +169,13 @@
     </footer>
 
     <!-- MODAL EDITAR PEDIDO -->
-    <div class="modal fade" id="modalEditarPedido" tabindex="-1" aria-labelledby="modalEditarPedidoLabel" aria-hidden="true">
+    <div class="modal fade" id="modalEditarPedido" tabindex="-1" aria-labelledby="modalEditarPedidoLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content border-0 shadow rounded-4">
                 <div class="modal-header bg-light border-0 py-3">
-                    <h5 class="modal-title fw-bold text-primary-custom" id="modalEditarPedidoLabel">✏️ Editar Pedido</h5>
+                    <h5 class="modal-title fw-bold text-primary-custom" id="modalEditarPedidoLabel">✏️ Editar Pedido
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
@@ -231,7 +239,8 @@
                                 <input type="date" class="form-control" id="editFechaEntrega" required>
                             </div>
                             <div class="col-md-4">
-                                <label for="editModalidadEntrega" class="form-label small fw-bold">Modalidad Entrega *</label>
+                                <label for="editModalidadEntrega" class="form-label small fw-bold">Modalidad Entrega
+                                    *</label>
                                 <select class="form-select" id="editModalidadEntrega" required>
                                     <option value="Despacho a domicilio">Despacho a domicilio</option>
                                     <option value="Retiro en tienda">Retiro en tienda</option>
@@ -249,15 +258,18 @@
                     </form>
                 </div>
                 <div class="modal-footer border-0 bg-light py-3 justify-content-end">
-                    <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary rounded-pill px-4" id="btnGuardarEdicion">Guardar Cambios</button>
+                    <button type="button" class="btn btn-secondary rounded-pill px-4"
+                        data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary rounded-pill px-4" id="btnGuardarEdicion">Guardar
+                        Cambios</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- MODAL CONFIRMAR ELIMINAR -->
-    <div class="modal fade" id="modalConfirmarEliminar" tabindex="-1" aria-labelledby="modalConfirmarEliminarLabel" aria-hidden="true">
+    <div class="modal fade" id="modalConfirmarEliminar" tabindex="-1" aria-labelledby="modalConfirmarEliminarLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow rounded-4">
                 <div class="modal-header border-0 pb-0 justify-content-center mt-3">
@@ -266,12 +278,16 @@
                     </div>
                 </div>
                 <div class="modal-body text-center pt-2 pb-4 px-4">
-                    <h4 class="modal-title mb-3 fw-bold text-dark" id="modalConfirmarEliminarLabel">¿Eliminar Pedido?</h4>
-                    <p class="text-muted mb-0">Esta acción no se puede deshacer. ¿Estás seguro de que deseas eliminar permanentemente este pedido de la base de datos?</p>
+                    <h4 class="modal-title mb-3 fw-bold text-dark" id="modalConfirmarEliminarLabel">¿Eliminar Pedido?
+                    </h4>
+                    <p class="text-muted mb-0">Esta acción no se puede deshacer. ¿Estás seguro de que deseas eliminar
+                        permanentemente este pedido de la base de datos?</p>
                 </div>
                 <div class="modal-footer border-0 pt-0 justify-content-center mb-3 gap-2">
-                    <button type="button" class="btn btn-secondary px-4 rounded-pill" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger px-4 rounded-pill" id="btnConfirmarEliminar">Eliminar</button>
+                    <button type="button" class="btn btn-secondary px-4 rounded-pill"
+                        data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger px-4 rounded-pill"
+                        id="btnConfirmarEliminar">Eliminar</button>
                 </div>
             </div>
         </div>
