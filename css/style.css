@@ -255,3 +255,16 @@ a {
 .btn-login-submit:hover {
   background-color: #c09060 !important;
 }
+
+/* Enlace discreto de acceso al panel admin en el footer */
+.admin-access-link {
+  color: rgba(254, 250, 224, 0.4);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.admin-access-link:hover {
+  color: var(--primary-color);
+  opacity: 1;
+}
